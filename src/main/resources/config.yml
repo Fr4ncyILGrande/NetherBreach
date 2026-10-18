@@ -1,0 +1,80 @@
+# NetherBreach configuration
+#
+# The Roof Perforator uses an internal counter. Vanilla durability is ignored.
+uses: 5
+
+# auto uses each player's client locale; en/it forces one language for everyone.
+# fallback applies to the console, unsupported locales and items without a holder.
+# item-mode: holder = use the holder's language
+# item-mode: server = always use the fallback language
+language:
+  mode: auto
+  fallback: en
+  item-mode: holder
+
+crafting:
+  enabled: true
+  recipe:
+    # [Netherite scrap] [Diamond block] [Netherite scrap]
+    # [     Empty      ] [  Blaze rod  ] [     Empty      ]
+    # [     Empty      ] [  Blaze rod  ] [     Empty      ]
+    shape:
+      - "SDS"
+      - " B "
+      - " B "
+    ingredients:
+      S: NETHERITE_SCRAP
+      D: DIAMOND_BLOCK
+      B: BLAZE_ROD
+
+item:
+  # Vanilla material; it must end in _PICKAXE. Default: GOLDEN_PICKAXE.
+  material: GOLDEN_PICKAXE
+  en:
+    name: "&6Roof Perforator"
+    lore:
+      - "&7Specialized tool for the Nether roof."
+      - "&7It can perforate Nether roof bedrock only."
+      - ""
+      - "&eUses remaining: {uses}"
+      - ""
+      - "&cNo enchantments. No repairs."
+  it:
+    name: "&6Roof Perforator"
+    lore:
+      - "&7Piccone speciale per il tetto del Nether."
+      - "&7Perfora soltanto la bedrock del tetto."
+      - ""
+      - "&eUtilizzi rimasti: {uses}"
+      - ""
+      - "&cNon può essere incantato né riparato."
+
+messages:
+  en:
+    wrong-dimension: "&cThe Roof Perforator works in the Nether only!"
+    wrong-block: "&cThe Roof Perforator can perforate bedrock only!"
+    wrong-height: "&cThe Roof Perforator works on Nether roof bedrock only!"
+    protected: "&cThat block is protected by another plugin."
+    item-received: "&aYou received a Roof Perforator!"
+    item-given: "&aYou gave a Roof Perforator to &f{player}&a."
+    item-consumed: "&cYour Roof Perforator broke after its last use!"
+    block-broken: "&aNether roof bedrock perforated! &e{uses} &auses remaining."
+    no-permission: "&cYou do not have permission to use this command!"
+    player-only: "&cThis command can only be used by a player."
+    player-not-found: "&cPlayer not found or not online: &f{player}"
+    usage: "&eUsage: /netherbreach <give [player]|reload>"
+    config-reloaded: "&aNetherBreach configuration reloaded successfully!"
+  it:
+    wrong-dimension: "&cIl Roof Perforator può essere usato soltanto nel Nether!"
+    wrong-block: "&cIl Roof Perforator può perforare soltanto la bedrock!"
+    wrong-height: "&cQuesta bedrock non fa parte del tetto del Nether!"
+    protected: "&cQuesto blocco è protetto da un altro plugin."
+    item-received: "&aHai ricevuto un Roof Perforator!"
+    item-given: "&aHai consegnato un Roof Perforator a &f{player}&a."
+    item-consumed: "&cIl tuo Roof Perforator si è spezzato dopo l'ultimo utilizzo!"
+    block-broken: "&aBedrock del tetto perforata! &eUtilizzi rimasti: {uses}."
+    no-permission: "&cNon hai il permesso di usare questo comando!"
+    player-only: "&cQuesto comando può essere usato solo da un giocatore."
+    player-not-found: "&cIl giocatore &f{player} &cnon esiste oppure non è online."
+    usage: "&eSintassi: /netherbreach <dai [giocatore]|ricarica>"
+    config-reloaded: "&aConfigurazione di NetherBreach ricaricata con successo!"

@@ -1,0 +1,18 @@
+name: NetherBreach
+version: '${project.version}'
+main: it.fr4ncyilgrande.netherbreach.NetherBreach
+api-version: '26.2'
+author: Fr4ncyILGrande
+description: Configurable tool that breaks Nether roof bedrock exclusively.
+commands:
+  netherbreach:
+    description: Administration commands for NetherBreach and the Roof Perforator
+    usage: /<command> <give [player]|reload>
+    aliases: [nb, roofperforator]
+permissions:
+  netherbreach.give:
+    description: Gives a Roof Perforator to a player
+    default: op
+  netherbreach.admin:
+    description: Reloads the NetherBreach configuration
+    default: op
