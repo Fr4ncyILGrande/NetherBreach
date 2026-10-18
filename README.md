@@ -62,8 +62,6 @@ By default, the plugin automatically checks each player’s Minecraft language:
 
 Server owners can also force English or Italian for everyone through the configuration.
 
-The Italian localization was written specifically for the plugin and uses natural Minecraft terminology rather than direct machine-translated sentences.
-
 ## Commands
 
 ```text
