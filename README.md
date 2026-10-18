@@ -84,3 +84,5 @@ Command aliases:
 ```
 
 Before removing a bedrock block, NetherBreach sends a cancellable block-breaking event. This allows protection and claim plugins to prevent the action when necessary.
+
+By default, commands can only be used by **server operators**.
