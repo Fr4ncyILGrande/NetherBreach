@@ -1,66 +1,88 @@
 # NetherBreach
 
+NetherBreach is a simple server plugin that lets players create a controlled opening in the Nether roof.
 
-NetherBreach is a Minecraft 26.2 plugin built exclusively against the Bukkit/Spigot API. It adds the **Roof Perforator**, a golden pickaxe designed solely to perforate Nether roof bedrock. It supports Paper, Purpur and Spigot 26.2.
+The plugin adds one special tool: the **Roof Perforator**. It is a glowing golden pickaxe designed exclusively for breaking bedrock in the highest five layers of the Nether. In a standard Nether world, this means bedrock between Y=123 and Y=127.
 
-## Behavior
+The Roof Perforator cannot break normal blocks, bedrock outside the Nether roof, or bedrock in other dimensions. It also cannot damage entities. This keeps the tool focused on one purpose without turning it into an overpowered pickaxe.
 
-- The Roof Perforator is a glowing `GOLDEN_PICKAXE` with 5 uses by default. It breaks after its fifth valid use and must then be crafted again.
-- Server owners can change the use count with `uses` and the pickaxe material with `item.material` in `plugins/NetherBreach/config.yml`. Recognized items are aligned with the configured material whenever the plugin sanitizes them.
-- It works only in the Nether, within the five layers below the dimension's logical height (Y=123–127 in a standard Nether), and only on `BEDROCK`.
-- It cannot break other blocks or bedrock elsewhere, damage entities, produce bedrock drops, or use vanilla durability.
-- Enchanting, enchanted books, Mending, anvil, grindstone, crafting repairs and smithing are blocked. Any externally added enchantment is removed at the next safe plugin boundary.
-- The glint is visual only and uses Minecraft's native item glint. There is no real or hidden enchantment.
-- A `PersistentDataContainer` marker in the `netherbreach` namespace identifies the item; its name and lore are not used as identity.
-- The plugin contains no telemetry, metrics, updater, HTTP client, socket or runtime third-party dependency.
+## How it works
+
+By default, every Roof Perforator has **5 uses**. One use is consumed only after a valid Nether roof bedrock block is successfully removed.
+
+After the fifth use, the pickaxe breaks and must be crafted again. It does not use normal Minecraft durability, so its durability bar cannot be repaired or manipulated.
+
+The Roof Perforator cannot be:
+
+- Enchanted
+- Combined with enchanted books
+- Repaired in an anvil
+- Repaired with Mending
+- Modified with a grindstone
+- Upgraded with a smithing table
+- Used in crafting recipes to restore its uses
+
+Its enchanted appearance is only a visual glow. The item does not contain any real or hidden enchantments.
+
+## Default crafting recipe
+
+
+
+The resulting item is a glowing golden pickaxe named **Roof Perforator**.
+
+## Configuration
+
+Server owners can customize the plugin through `config.yml`.
+
+You can change:
+
+- The number of uses
+- The pickaxe material
+- The complete crafting recipe
+- Item name and description
+- Plugin messages
+- Language behavior
+- Whether crafting is enabled
+
+After changing the configuration, use:
+
+```text
+/netherbreach reload
+```
 
 ## Languages
 
-English is the default language and Italian is included as a complete translation. The `language` section controls localization:
+NetherBreach includes complete English and Italian support.
 
-- `mode: auto` follows each player's English or Italian client locale. Unsupported locales use `fallback`.
-- `mode: en` or `mode: it` forces English or Italian server-wide, including console messages.
-- `fallback: en` is the default for the console, unsupported locales and items without a holder.
-- `item-mode: holder` updates item name and lore to the holder's language. `item-mode: server` always uses the fallback language while `mode` is `auto`.
+By default, the plugin automatically checks each player’s Minecraft language:
 
-Messages and item text can be edited under `messages.en`, `messages.it`, `item.en` and `item.it`. An item stored in a shared container uses the fallback language until a player receives or handles it.
+- English players receive English messages and item descriptions.
+- Italian players receive Italian messages and item descriptions.
+- Unsupported languages use English as the fallback.
 
-## Default recipe
+Server owners can also force English or Italian for everyone through the configuration.
 
-```text
-[Netherite scrap] [Diamond block] [Netherite scrap]
-[     Empty      ] [  Blaze rod  ] [     Empty      ]
-[     Empty      ] [  Blaze rod  ] [     Empty      ]
-```
-
-The shape and ingredients are configurable under `crafting`. Run `/netherbreach reload` after changing the configuration.
+The Italian localization was written specifically for the plugin and uses natural Minecraft terminology rather than direct machine-translated sentences.
 
 ## Commands
 
-- `/netherbreach give [player]` — permission `netherbreach.give`
-- `/netherbreach reload` — permission `netherbreach.admin`
-
-Italian subcommand aliases `dai` and `ricarica` are also accepted. Command aliases are `/nb` and `/roofperforator`.
-
-## Building
-
-Minecraft 26.2 requires Java 25 or newer. With Maven installed, run:
-
-```bash
-mvn -B clean verify
+```text
+/netherbreach give [player]
+/netherbreach reload
 ```
 
-The JAR is generated at `target/NetherBreach-1.0.0.jar`. Copy it into the server's `plugins/` directory.
+Italian command alternatives are also available:
 
-## GitHub
+```text
+/netherbreach dai [giocatore]
+/netherbreach ricarica
+```
 
-Upload the complete project contents, including `.github`, `src`, `pom.xml`, `LICENSE` and the documentation, to the repository root. On every push, GitHub Actions runs the tests with Java 25 and publishes the JAR as a workflow artifact.
+Command aliases:
 
-## Compatibility
+```text
+/nb
+/roofperforator
+```
 
-The project compiles against `org.spigotmc:spigot-api:26.2-R0.1-SNAPSHOT` and uses Bukkit/Spigot types only. Paper and Purpur provide the same API surface. Before changing a block, NetherBreach emits a cancellable `BlockBreakEvent` so protection plugins can prevent the operation.
-
-## Ownership and license
-
-Owner/author: **Fr4ncyILGrande**. Licensed under the MIT License. See [LICENSE](LICENSE).
-
+Before removing a bedrock block, NetherBreach sends a cancellable block-breaking event. This allows protection and claim plugins to prevent the action when necessary.
