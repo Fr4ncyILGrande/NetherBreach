@@ -1,6 +1,5 @@
 # NetherBreach
 
-[Italian translation](README-IT.md)
 
 NetherBreach is a Minecraft 26.2 plugin built exclusively against the Bukkit/Spigot API. It adds the **Roof Perforator**, a golden pickaxe designed solely to perforate Nether roof bedrock. It supports Paper, Purpur and Spigot 26.2.
 
