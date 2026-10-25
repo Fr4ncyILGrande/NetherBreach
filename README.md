@@ -1,3 +1,12 @@
+
+<div style="text-align: center;">
+  <img
+    src="https://i.ibb.co/gLJJsD6V/2026-10-24-17-01-49.png"
+    alt="Foto"
+    style="max-width: 100%; height: auto; border-radius: 8px;"
+  >
+</div>
+
 # NetherBreach
 
 NetherBreach is a simple server plugin that lets players create a controlled opening in the Nether roof.
@@ -86,3 +95,12 @@ Command aliases:
 Before removing a bedrock block, NetherBreach sends a cancellable block-breaking event. This allows protection and claim plugins to prevent the action when necessary.
 
 By default, commands can only be used by **server operators**.
+
+<p align="center">
+  <a href="https://discord.gg/Zn5d9d2pBU" target="_blank">
+    <img src="https://i.ibb.co/8Dh71sx0/Discord-logo.png" alt="Discord" width="300">
+  </a>
+</p>
+<p align="center">
+  <em>Join the Discord if you have any questions or need support!</em>
+</p>
